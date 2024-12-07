@@ -1,1 +1,1 @@
-# QuaWorlds
+# QuaHosting
