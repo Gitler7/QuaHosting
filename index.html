@@ -3,85 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuaHosting PRO - Головна</title>
-    <link rel="stylesheet" href="QuaWorlds.css">
+    <title>Minecraft Hosting Plans</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1e1e1e;
-            color: #fff;
+            background-color: #f4f4f9;
         }
         header {
             background-color: #333;
-            padding: 20px;
+            color: white;
             text-align: center;
+            padding: 20px 0;
         }
         header h1 {
             margin: 0;
-            color: #5a9f55;
         }
         nav {
+            background-color: #444;
             text-align: center;
-            margin: 20px 0;
+            padding: 10px 0;
         }
         nav a {
             color: white;
             text-decoration: none;
             margin: 0 15px;
-            font-size: 18px;
-            padding: 10px 20px;
-            border: 2px solid #5a9f55;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            padding: 10px;
         }
         nav a:hover {
-            background-color: #5a9f55;
-        }
-        .content {
-            text-align: center;
-            padding: 50px;
-        }
-        .content h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-        .content p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-        .content a {
-            background-color: #5a9f55;
-            color: white;
-            text-decoration: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
+            background-color: #555;
+            padding: 10px 15px;
             border-radius: 5px;
-            transition: background-color 0.3s;
         }
-        .content a:hover {
-            background-color: #4d8f4a;
+        .plans {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            background-color: #fff;
+        }
+        .plan {
+            background-color: #e9ecef;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+        }
+        .plan h2 {
+            margin: 10px 0;
+        }
+        .plan .price {
+            font-size: 24px;
+            color: green;
+            margin: 10px 0;
+        }
+        .plan button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .plan button:hover {
+            background-color: #218838;
+        }
+        #contact {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .contact-form {
+            max-width: 500px;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .contact-form h2 {
+            text-align: center;
+        }
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+        }
+        .contact-form .g-recaptcha {
+            margin: 10px 0;
+        }
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
         }
     </style>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-
     <header>
-        <h1>QuaHosting PRO</h1>
+        <h1>Minecraft Hosting</h1>
+        <p>Choose the best hosting plan for your server!</p>
     </header>
-
     <nav>
-        <a href="index.html">Головна</a>
-        <a href="panel.html">Панель</a>
-        <a href="register.html">Реєстрація</a>
+        <a href="#plans">Plans</a>
+        <a href="#contact">Contact</a>
     </nav>
-
-    <div class="content">
-        <h2>Найкраще місце для вашого Minecraft серверу</h2>
-        <p>Ми пропонуємо надійний хостинг, просте управління і підтримку 24/7 для вашого Minecraft проекту.</p>
-        <a href=" https://gitler7.github.io/plansi/">Розпочати зараз</a>
-    </div>
-
-</body>
-</html>
+    <section id="plans" class="plans">
+        <div class="plan">
+            <h2>Basic Plan</h2>
+            <p class="price">$5/month</p>
+            <p>1 GB RAM</p>
+            <p>10 Player Slots</p>
+            <button>Order Now</button>
+        </div>
+        <div class="plan">
+            <h2>Pro Plan</h2>
+            <p class="price">$15/month</p>
+            <p>4 GB RAM</p>
+            <p>50 Player Slots</p>
+            <button>Order Now</button>
+        </div>
+        <div class="plan">
+            <h2>Ultimate Plan</h2>
+            <p class="price">$25/month</p>
+            <p>8 GB RAM</p>
+            <p>Unlimited Slots</p>
+            <button>Order Now</button>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <form action="process_form.php" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <p>© 2024 Minecraft Hosting. Al
