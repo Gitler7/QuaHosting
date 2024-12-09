@@ -31,7 +31,7 @@
     <script>
         const output = document.getElementById('output');
         const input = document.getElementById('input');
-        const ws = new WebSocket('ws://localhost:8081');
+        const ws = new WebSocket('ws:0.0.0.0:25565');
 
         ws.onmessage = (event) => {
             const message = event.data;
