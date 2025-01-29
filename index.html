@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Реєстрація номерних знаків</title>
+    <title>Перевірка реєстраційних номерів</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            text-align: center;
         }
         header {
             background-color: #007bff;
             color: white;
-            text-align: center;
             padding: 20px;
             font-size: 24px;
         }
         .container {
-            max-width: 600px;
+            max-width: 500px;
             margin: 20px auto;
             padding: 20px;
             background: white;
@@ -46,75 +46,52 @@
         button:hover {
             background-color: #0056b3;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .result {
             margin-top: 20px;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: green;
         }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #007bff;
-            color: white;
+        .not-found {
+            color: red;
         }
     </style>
 </head>
 <body>
 
-<header>📋 Реєстрація номерних знаків</header>
+<header>🔍 Перевірка реєстраційних номерів</header>
 
 <div class="container">
-    <h2>Додати новий номер</h2>
-    <form id="licenseForm">
-        <label for="license">Номерний знак:</label>
-        <input type="text" id="license" required placeholder="Наприклад: АА1234ВХ">
-        
-        <label for="owner">Ім'я власника:</label>
-        <input type="text" id="owner" required placeholder="Ваше ім'я">
-        
-        <label for="car">Модель авто:</label>
-        <input type="text" id="car" required placeholder="Toyota, BMW, Audi...">
-        
-        <button type="submit">Зареєструвати</button>
-    </form>
-
-    <h2>📄 Список зареєстрованих номерів</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Номерний знак</th>
-                <th>Власник</th>
-                <th>Модель авто</th>
-            </tr>
-        </thead>
-        <tbody id="licenseList">
-            <!-- Зареєстровані номери будуть тут -->
-        </tbody>
-    </table>
+    <h2>Введіть номерний знак</h2>
+    <input type="text" id="licenseInput" placeholder="Наприклад: АА1234ВХ">
+    <button onclick="checkLicense()">Перевірити</button>
+    
+    <div id="result" class="result"></div>
 </div>
 
 <script>
-    document.getElementById('licenseForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+    // Фіктивна база даних (можна оновити)
+    const licenseDatabase = [
+        { license: "HH MS 80E", owner: "Fixssi", car: "Wolfsburg Discovery" },
+        { license: "HH PM 24", owner: "noname_noname", car: "Stuttgart Landshaft" },
+        { license: "СА7890ОР", owner: "Марія Коваленко", car: "Audi A6" }
+    ];
 
-        let license = document.getElementById('license').value;
-        let owner = document.getElementById('owner').value;
-        let car = document.getElementById('car').value;
+    function checkLicense() {
+        let input = document.getElementById('licenseInput').value.trim().toUpperCase();
+        let resultDiv = document.getElementById('result');
 
-        let table = document.getElementById('licenseList');
-        let newRow = table.insertRow();
-        
-        newRow.insertCell(0).innerText = license;
-        newRow.insertCell(1).innerText = owner;
-        newRow.insertCell(2).innerText = car;
+        let found = licenseDatabase.find(entry => entry.license === input);
 
-        document.getElementById('licenseForm').reset();
-    });
+        if (found) {
+            resultDiv.innerHTML = `✅ Номер знайдено!<br> Власник: ${found.owner}<br> Авто: ${found.car}`;
+            resultDiv.classList.remove("not-found");
+        } else {
+            resultDiv.innerHTML = "❌ Номер не знайдено!";
+            resultDiv.classList.add("not-found");
+        }
+    }
 </script>
 
 </body>
